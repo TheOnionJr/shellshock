@@ -23,7 +23,7 @@ RUN mkdir -p $APACHE_RUN_DIR
 RUN mkdir -p $APACHE_LOCK_DIR
 RUN mkdir -p $APACHE_LOG_DIR
 
-COPY resources/index.html /var/www/html
+COPY /resources/index.html /var/www/html
 
 EXPOSE 80
 
@@ -34,7 +34,7 @@ RUN /bash-4.3/configure && make
 RUN ln -s /bash-4.3/bash bash_shellshock
 
 RUN mkdir /var/www/html/cgi-bin
-COPY resources/script.cgi /var/www/html/cgi-bin
+COPY /resources/script.cgi /var/www/html/cgi-bin
 
 #Start apache
 CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
