@@ -9,7 +9,7 @@ services:
       internal_facing:
         ipv4_address: 10.5.0.2
     ports:
-      - "22:8022"
+      - "8022:22"
   target:
     build: ./target
     networks:
