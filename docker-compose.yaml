@@ -18,7 +18,7 @@ services:
 
 networks:
   user_facing:
-    drier: bridge
+    driver: bridge
     ipam:
       config:
         - subnet: 10.4.0.0/24
