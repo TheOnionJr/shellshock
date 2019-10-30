@@ -1,8 +1,9 @@
 FROM kalilinux/kali-linux-docker
 
-RUN apt update && dist-upgrade
-RUN apt autoremove
-RUN apt clean
+RUN apt update
+RUN apt -y dist-upgrade
+RUN apt -y autoremove
+RUN apt -y clean
 
 #Installing tools
-RUN apt install kali-linux-web
+RUN apt install -y kali-linux-web
