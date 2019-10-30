@@ -1,2 +1,31 @@
 version: '2'
 
+services:
+  agent:
+    build: ./kali
+    networks:
+      user_facing:
+        ipv4_address: 10.4.0.2
+      internal_facing:
+        ipv4_address: 10.5.0.2
+    ports:
+      - "22:8022"
+  target:
+    build: ./target
+    networks:
+      internal_facing:
+        ipv4_address: 10.5.0.69
+
+networks:
+  user_facing:
+    drier: bridge
+    ipam:
+      config:
+        - subnet: 10.4.0.0/24
+        gateway: 10.4.0.1
+  internal_facing:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
